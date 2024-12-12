@@ -22,21 +22,21 @@ alias Sssh='eval $(ssh-agent)'
 
 # PacMan / Arch
 
-alias install='sudo pacman -S'
-alias search='sudo pacman -Ss'
-alias remove='sudo pacman -Rn'
-alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
-alias purge='sudo pacman -Rns'
-alias update='sudo pacman -Syu'
+#alias install='sudo pacman -S'
+#alias search='sudo pacman -Ss'
+#alias remove='sudo pacman -Rn'
+#alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
+#alias purge='sudo pacman -Rns'
+#alias update='sudo pacman -Syu'
 
 # APT / Debian
 
-#alias install='sudo nala install'
-#alias search='sudo nala search'
-#alias remove='sudo nala remove'
-#alias autoremove='sudo apt auto-remove'
-#alias purge='sudo nala purge'
-#alias update='sudo nala update && sudo nala upgrade'
+alias install='sudo nala install'
+alias search='sudo nala search'
+alias remove='sudo nala remove'
+alias autoremove='sudo apt auto-remove'
+alias purge='sudo nala purge'
+alias update='sudo nala update && sudo nala upgrade'
 
 # Flatpak Application Aliases
 
@@ -63,9 +63,9 @@ RESET='\033[0m'
 
 # Prompt
 
-#PS1='$(echo -e "\[${YELLOW}--=={[${RESET} ${RED}\u${RESET} ${YELLOW}]}==--${RESET} : ${BLUE}\W${RESET}\] \n=>=>=> ")'
+#PS1='$(echo -e "\[${YELLOW}--=={[${RESET} ${RED}\u${RESET} ${YELLOW}]}==--${RESET} : ${BLUE}\W${RESET}\] =>=>=> ")'
 PS1='--=={[ \u ]}==-- : \w : =>=>=> '
-
+PS1='>──[ \u ]──[ \w ]──<> '
 
 # Terminal Bootstrap
 
