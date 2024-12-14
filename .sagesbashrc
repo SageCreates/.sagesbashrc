@@ -1,0 +1,91 @@
+# Welcome to Sage's BashRC. 
+
+#Prompt, decorative stuff 
+
+PS1='──=={[ \u ]}==──[ \w ]=>=>=> '
+
+echo ""
+echo "   In a land where eyes are omniscient, ever-watching from all corners..."
+echo "   It's best to have a home away from home, or at least the tools to"
+echo "   make a new one."
+echo "     .     .            .  (   )     .          _        *    "
+echo "  .              .        (    )       .       <0>            "
+echo "     *                     (    )             . -             "
+echo "  .      .            .    (    )  *                       .  "
+echo "             _ *            )  )         .           *        "
+echo "         .  <0>.           (  (              _   /\          ."
+echo "             -    .         (_)  .          <0> /  \  /\      "
+echo "  .     *           ________[_]________  .   /\/    \/  \   . "
+echo "           /\      /\        ______    \    /   /\/\  /\/\    "
+echo "          /  \    //_\       \    /\    \  /\/\/    \/    \   "
+echo "   /\  . / /\/\  //___\       \__/  \    \/         / /\      "
+echo "  /  \  /\/    \//_____\       \ |[]|     \        / /  \     "
+echo " /\/\/\/       //_______\       \|__|      \  /\  /\/         "
+echo "/      \      /XXXXXXXXXX\                  \    /  /\        "
+echo "        \    /_I_II  I__I_\__________________\  /  //\\\      "
+echo "  *     *      I_I|  I__I_____[]_|_[]_____I;      ///\\\\\    "
+echo "      *<0>     I_II  I__I_____[]_|_[]_____I      ///||\\\\\   "
+echo "    *\_/|\     I II__I  I     XXXXXXX     I     ////||\\\\\\\ "
+echo "       / \  ~~~~~=   =~~~~~~~~~~~~~~~~~~~~~~~~      ||        "
+echo "                                                              " 
+echo "                Welcome to Sages Dev Space.                   "
+echo "                                                              "
+
+# Terminal Aliases
+
+# Agnostic Aliases
+
+alias l='ls -A'
+alias x='exit'
+alias h='sudo htop'
+alias c='clear'
+alias p='nvim '
+alias e='nano '
+alias r='source ~/.sagesbashrc/.sagesbashrc'
+alias s='ssh '
+alias program='nvim '
+alias edit='nano '
+alias programbash='sudo nvim ~/.sagesbashrc/.sagesbashrc'
+alias editbash='sudo nano ~/.sagesbashrc/.sagesbashrc'
+alias reload='source ~/.sagesbashrc/.sagesbashrc'
+alias Sssh='eval $(ssh-agent)'
+
+# PacMan / Arch
+
+#alias install='sudo pacman -S'
+#alias search='sudo pacman -Ss'
+#alias remove='sudo pacman -Rn'
+#alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
+#alias purge='sudo pacman -Rns'
+#alias update='sudo pacman -Syu'
+
+# APT / Debian
+
+alias install='sudo nala install'
+alias search='sudo nala search'
+alias remove='sudo nala remove'
+alias autoremove='sudo apt auto-remove'
+alias purge='sudo nala purge'
+alias update='sudo nala update && sudo nala upgrade'
+
+# TO REMOVE SAGES BASHRC
+
+alias REMOVESAGESBASHRC='sudo rm -r ~/.sagesbashrc'
+
+# Color Codes
+
+#RED='\033[0;31m'
+#GREEN='\033[0;32m'
+#BLUE='\033[0;34m'
+#YELLOW='\033[0;33m'
+#CYAN='\033[0;36m'
+#PURPLE='\033[0;35m'
+#RESET='\033[0m'
+
+# Example usage
+#echo -e "${RED}This text is red.${RESET}"
+#echo -e "${GREEN}This text is green.${RESET}"
+#echo -e "${BLUE}This text is blue.${RESET}"
+#echo -e "${YELLOW}This text is yellow.${RESET}"
+#echo -e "${CYAN}This text is cyan.${RESET}"
+#echo -e "${PURPLE}This text is purple.${RESET}"
