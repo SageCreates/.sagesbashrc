@@ -2,7 +2,7 @@
 
 #Prompt, decorative stuff 
 
-cat ~/.sagesbashrc/LibraryASCIIArt
+cat ~/.sagesbashrc/libraryasciiart.txt
 
 PS1='──=={[ \u ]}==──[ \w ]=>=>=> '
 
