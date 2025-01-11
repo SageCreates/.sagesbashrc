@@ -2,34 +2,9 @@
 
 #Prompt, decorative stuff 
 
-PS1='──=={[ \u ]}==──[ \w ]=>=>=> '
+cat ~/.sagesbashrc/LibraryASCIIArt
 
-echo ""
-echo "   In a land where eyes are omniscient, ever-watching from all corners..."
-echo "   It's best to have a home away from home, or at least the tools to"
-echo "   make a new one."
-echo "     .     .            .  (   )     .          _        *    "
-echo "  .              .        (    )       .       <0>            "
-echo "     *                     (    )             . -             "
-echo "  .      .            .    (    )  *                       .  "
-echo "             _ *            )  )         .           *        "
-echo "         .  <0>.           (  (              _   /\          ."
-echo "             -    .         (_)  .          <0> /  \  /\      "
-echo "  .     *           ________[_]________  .   /\/    \/  \   . "
-echo "           /\      /\        ______    \    /   /\/\  /\/\    "
-echo "          /  \    //_\       \    /\    \  /\/\/    \/    \   "
-echo "   /\  . / /\/\  //___\       \__/  \    \/         / /\      "
-echo "  /  \  /\/    \//_____\       \ |[]|     \        / /  \     "
-echo " /\/\/\/       //_______\       \|__|      \  /\  /\/         "
-echo "/      \      /XXXXXXXXXX\                  \    /  /\        "
-echo "        \    /_I_II  I__I_\__________________\  /  //\\\      "
-echo "  *     *      I_I|  I__I_____[]_|_[]_____I;      ///\\\\\    "
-echo "      *<0>     I_II  I__I_____[]_|_[]_____I      ///||\\\\\   "
-echo "    *\_/|\     I II__I  I     XXXXXXX     I     ////||\\\\\\\ "
-echo "       / \  ~~~~~=   =~~~~~~~~~~~~~~~~~~~~~~~~      ||        "
-echo "                                                              " 
-echo "                Welcome to Sages Dev Space.                   "
-echo "                                                              "
+PS1='──=={[ \u ]}==──[ \w ]=>=>=> '
 
 # Terminal Aliases
 
@@ -52,25 +27,29 @@ alias Sssh='eval $(ssh-agent)'
 
 # PacMan / Arch
 
-#alias install='sudo pacman -S'
-#alias search='sudo pacman -Ss'
-#alias remove='sudo pacman -Rn'
-#alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
-#alias purge='sudo pacman -Rns'
-#alias update='sudo pacman -Syu'
+alias install='sudo pacman -S'
+alias search='sudo pacman -Ss'
+alias remove='sudo pacman -Rn'
+alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
+alias purge='sudo pacman -Rns'
+alias update='sudo pacman -Syu'
 
 # APT / Debian
 
-alias install='sudo nala install'
-alias search='sudo nala search'
-alias remove='sudo nala remove'
-alias autoremove='sudo apt auto-remove'
-alias purge='sudo nala purge'
-alias update='sudo nala update && sudo nala upgrade'
+#alias install='sudo nala install'
+#alias search='sudo nala search'
+#alias remove='sudo nala remove'
+#alias autoremove='sudo apt auto-remove'
+#alias purge='sudo nala purge'
+#alias update='sudo nala update && sudo nala upgrade'
 
 # TO REMOVE SAGES BASHRC
 
 alias REMOVESAGESBASHRC='sudo rm -r ~/.sagesbashrc'
+
+# WayDroid DBUS Path
+
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
 # Color Codes
 
@@ -89,3 +68,26 @@ alias REMOVESAGESBASHRC='sudo rm -r ~/.sagesbashrc'
 #echo -e "${YELLOW}This text is yellow.${RESET}"
 #echo -e "${CYAN}This text is cyan.${RESET}"
 #echo -e "${PURPLE}This text is purple.${RESET}"
+
+# Linux Console
+
+if [ "$TERM" = "linux" ]; then
+  /bin/echo -e "
+  \e]P0171717
+  \e]P1d81765
+  \e]P297d01a
+  \e]P3ffa800
+  \e]P416b1fb
+  \e]P5ff2491
+  \e]P60fdcb6
+  \e]P7ebebeb
+  \e]P838252c
+  \e]P9ff0000
+  \e]PA76b639
+  \e]PBe1a126
+  \e]PC289cd5
+  \e]PDff2491
+  \e]PE0a9b81
+  \e]PFf8f8f8
+  "
+fi
