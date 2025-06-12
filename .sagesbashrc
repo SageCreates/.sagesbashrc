@@ -1,18 +1,45 @@
 # Welcome to Sage's BashRC. 
 
-#Prompt, decorative stuff 
+# LEGEND:
+# [ ] : Description
+# { } : Configuration Required; Difficulty Will be Listed
+# ( ) : Important Notes
 
-cat ~/.sagesbashrc/libraryasciiart.txt
+# Dependencies Required :
+# nala ( Debian Only ) [ For a prettier APT frontend, and the ability to download multiple packages at once ]
+# bash-preexec [ a dependency for Atuin ]
+# atuin { Possible Configuration Required ( Difficulty : Easy / Medium, if you are trying to enable syncing to a server ) } [ For a more useful and convenient way of viewing shell history ]
+# zellij [ for having a terminal multiplexer / being able to keep a process / program running in the background for whatever purpose necessary ]
+# nano [ A simple text editor ]
+# NVChad { Configuration Installation Required ( Difficulty : Easy ) }
+# neovim ( It is NECCESSARY to have the latest version of it ) [ A newer version of Vim, for us to use NVChad as a terminal based IDE ]
+# nerd-fonts ( It doesn't matter which one of the set you pick, as long as it does not have mono in the title because of icon rendering issues) [ For use within NeoVim and NVChad ]
+# ripgrep [ dependency for NVChad ]
 
+# Dependency / Configuration Source / Website :
+# NeoVim ( Listing for Debian usage because the version available through APT is outdated ); ( Only run on Debian systems) :
+alias debianneoviminstall='sudo add-apt-repository ppa:neovim-ppa/unstable -y; sudo apt update; sudo apt install neovim'
+# NVChad : https://nvchad.com/docs/quickstart/install
+# Atuin ( Only listing for usage with Debian based systems since it can be installed with PacMan on Arch ) : https://atuin.sh/
+
+# Terminal Decorations
+# On Every Open
+
+# ASCII Art : Sage's Navi
+cat ~/.sagesbashrc/sagesnavi.txt
+
+# ASCII Art : Library
+# cat ~/.sagesbashrc/libraryasciiart.txt
+
+# Prompt
 PS1='──=={[ \u ]}==──[ \w ]=>=>=> '
 
 # Terminal Aliases
-
 # Agnostic Aliases
-
 alias l='ls -A'
 alias x='exit'
 alias h='sudo htop'
+alias b='sudo btop'
 alias c='clear'
 alias p='nvim '
 alias e='nano '
@@ -26,7 +53,6 @@ alias reload='source ~/.sagesbashrc/.sagesbashrc'
 alias Sssh='eval $(ssh-agent)'
 
 # PacMan / Arch
-
 alias install='sudo pacman -S'
 alias search='sudo pacman -Ss'
 alias remove='sudo pacman -Rn'
@@ -35,7 +61,6 @@ alias purge='sudo pacman -Rns'
 alias update='sudo pacman -Syu'
 
 # APT / Debian
-
 #alias install='sudo nala install'
 #alias search='sudo nala search'
 #alias remove='sudo nala remove'
@@ -43,51 +68,23 @@ alias update='sudo pacman -Syu'
 #alias purge='sudo nala purge'
 #alias update='sudo nala update && sudo nala upgrade'
 
-# TO REMOVE SAGES BASHRC
+# Zellij Aliases
+alias zs='zellij -s'
+alias za='zellij a'
+alias zls='zellij list-sessions'
+alias zd='zellij delete-session'
+alias zda='zellij delete-all-sessions'
+alias zh='zellij help'
 
+# TO REMOVE SAGES BASHRC
 alias REMOVESAGESBASHRC='sudo rm -r ~/.sagesbashrc'
 
+#Useful Program Configurations:
 # WayDroid DBUS Path
-
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
-# Color Codes
+# Bash Pre-Exec Loader
+[[ -f /usr/share/bash-preexec/bash-preexec.sh ]] && source /usr/share/bash-preexec/bash-preexec.sh
 
-#RED='\033[0;31m'
-#GREEN='\033[0;32m'
-#BLUE='\033[0;34m'
-#YELLOW='\033[0;33m'
-#CYAN='\033[0;36m'
-#PURPLE='\033[0;35m'
-#RESET='\033[0m'
-
-# Example usage
-#echo -e "${RED}This text is red.${RESET}"
-#echo -e "${GREEN}This text is green.${RESET}"
-#echo -e "${BLUE}This text is blue.${RESET}"
-#echo -e "${YELLOW}This text is yellow.${RESET}"
-#echo -e "${CYAN}This text is cyan.${RESET}"
-#echo -e "${PURPLE}This text is purple.${RESET}"
-
-# Linux Console
-
-if [ "$TERM" = "linux" ]; then
-  /bin/echo -e "
-  \e]P0171717
-  \e]P1d81765
-  \e]P297d01a
-  \e]P3ffa800
-  \e]P416b1fb
-  \e]P5ff2491
-  \e]P60fdcb6
-  \e]P7ebebeb
-  \e]P838252c
-  \e]P9ff0000
-  \e]PA76b639
-  \e]PBe1a126
-  \e]PC289cd5
-  \e]PDff2491
-  \e]PE0a9b81
-  \e]PFf8f8f8
-  "
-fi
+# Atuin Shell History Processor Loader
+eval "$(atuin init bash)"
