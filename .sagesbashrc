@@ -1,12 +1,13 @@
 # Welcome to Sage's BashRC. 
 
-# LEGEND:
+# LEGEND :
 # [ ] : Description
 # { } : Configuration Required; Difficulty Will be Listed
 # ( ) : Important Notes
 
 # Dependencies Required :
 # nala ( Debian Only ) [ For a prettier APT frontend, and the ability to download multiple packages at once ]
+# yay ( Arch Only ) [ For installing packages not typically available through PacMan ]
 # bash-preexec [ a dependency for Atuin ]
 # atuin { Possible Configuration Required ( Difficulty : Easy / Medium, if you are trying to enable syncing to a server ) } [ For a more useful and convenient way of viewing shell history ]
 # zellij [ for having a terminal multiplexer / being able to keep a process / program running in the background for whatever purpose necessary ]
@@ -15,76 +16,98 @@
 # neovim ( It is NECCESSARY to have the latest version of it ) [ A newer version of Vim, for us to use NVChad as a terminal based IDE ]
 # nerd-fonts ( It doesn't matter which one of the set you pick, as long as it does not have mono in the title because of icon rendering issues) [ For use within NeoVim and NVChad ]
 # ripgrep [ dependency for NVChad ]
+# nb [ Notebook for the terminal ]
 
 # Dependency / Configuration Source / Website :
 # NeoVim ( Listing for Debian usage because the version available through APT is outdated ); ( Only run on Debian systems) :
 alias debianneoviminstall='sudo add-apt-repository ppa:neovim-ppa/unstable -y; sudo apt update; sudo apt install neovim'
 # NVChad : https://nvchad.com/docs/quickstart/install
 # Atuin ( Only listing for usage with Debian based systems since it can be installed with PacMan on Arch ) : https://atuin.sh/
+# Yay ( For usage on Arch only ); ( Only run on Arch systems) :
+alias archyayinstall='cd; sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si; cd; sudo rm -r yay'
 
-# Terminal Decorations
-# On Every Open
-
+# Terminal Decorations :
+# On Every Open :
+fastfetch
 # ASCII Art : Sage's Navi
 cat ~/.sagesbashrc/sagesnavi.txt
 
 # ASCII Art : Library
 # cat ~/.sagesbashrc/libraryasciiart.txt
 
-# Prompt
+# Prompt :
+# [ Sage's Space Arrow ] :
 PS1='──=={[ \u ]}==──[ \w ]=>=>=> '
+# [ The Final Boss ] :
+#PS1='┌{ \u }─[====================]]]]]\n└[ \w ]=>=>=> '
 
-# Terminal Aliases
-# Agnostic Aliases
-alias l='ls -A'
-alias x='exit'
-alias h='sudo htop'
-alias b='sudo btop'
+# Terminal Aliases :
+# Agnostic Aliases :
+alias l='ls -A '
+alias x='exit '
+alias h='sudo htop '
+alias b='sudo btop '
 alias c='clear'
 alias p='nvim '
 alias e='nano '
-alias r='source ~/.sagesbashrc/.sagesbashrc'
+alias r='source ~/.sagesbashrc/.sagesbashrc '
 alias s='ssh '
 alias program='nvim '
 alias edit='nano '
-alias programbash='sudo nvim ~/.sagesbashrc/.sagesbashrc'
-alias editbash='sudo nano ~/.sagesbashrc/.sagesbashrc'
-alias reload='source ~/.sagesbashrc/.sagesbashrc'
-alias Sssh='eval $(ssh-agent)'
+alias programbash='nvim ~/.sagesbashrc/.sagesbashrc '
+alias editbash='nano ~/.sagesbashrc/.sagesbashrc '
+alias reload='source ~/.sagesbashrc/.sagesbashrc '
+alias Sssh='eval $(ssh-agent) '
 
-# PacMan / Arch
-alias install='sudo pacman -S'
-alias search='sudo pacman -Ss'
-alias remove='sudo pacman -Rn'
-alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns -'
-alias purge='sudo pacman -Rns'
-alias update='sudo pacman -Syu'
+# PacMan / Arch :
+alias install='sudo pacman -S '
+alias yayinstall='yay -S '
+alias search='sudo pacman -Ss '
+alias yaysearch='yay -Ss '
+alias remove='sudo pacman -Rn '
+alias autoremove='sudo pacman -Qdtq | sudo pacman -Rns - '
+alias purge='sudo pacman -Rns '
+alias update='sudo pacman -Syu '
 
-# APT / Debian
-#alias install='sudo nala install'
-#alias search='sudo nala search'
-#alias remove='sudo nala remove'
-#alias autoremove='sudo apt auto-remove'
-#alias purge='sudo nala purge'
-#alias update='sudo nala update && sudo nala upgrade'
+# APT / Debian :
+#alias install='sudo nala install '
+#alias search='sudo nala search '
+#alias remove='sudo nala remove '
+#alias autoremove='sudo apt auto-remove '
+#alias purge='sudo nala purge '
+#alias update='sudo nala update && sudo nala upgrade '
 
-# Zellij Aliases
-alias zs='zellij -s'
-alias za='zellij a'
-alias zls='zellij list-sessions'
-alias zd='zellij delete-session'
-alias zda='zellij delete-all-sessions'
-alias zh='zellij help'
+# Zellij Aliases :
+alias zs='zellij -s '
+alias za='zellij a '
+alias zls='zellij list-sessions '
+alias zd='zellij delete-session '
+alias zda='zellij delete-all-sessions '
+alias zh='zellij help '
 
-# TO REMOVE SAGES BASHRC
-alias REMOVESAGESBASHRC='sudo rm -r ~/.sagesbashrc'
+# TO REMOVE SAGES BASHRC :
+alias REMOVESAGESBASHRC='sudo rm -r ~/.sagesbashrc '
 
 #Useful Program Configurations:
-# WayDroid DBUS Path
+# WayDroid DBUS Path :
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
-# Bash Pre-Exec Loader
+# Bash Pre-Exec Loader :
 [[ -f /usr/share/bash-preexec/bash-preexec.sh ]] && source /usr/share/bash-preexec/bash-preexec.sh
 
-# Atuin Shell History Processor Loader
+# Atuin Shell History Processor Loader :
 eval "$(atuin init bash)"
+. "$HOME/.atuin/bin/env"
+
+# FZF Loader :
+eval "$(fzf --bash)"
+# Search Components :
+# Finds Within Your Current Directory { ALT + S } :
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
+# 
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
