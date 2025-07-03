@@ -27,7 +27,7 @@ alias debianneoviminstall='curl -sL https://github.com/neovim/neovim/releases/la
 alias debianneovimarminstall='curl -sL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.tar.gz \
 | sudo tar -xzf - --strip-components=1 --overwrite -C /usr'
 # NVChad : 
-alias=NVChadinit='git clone https://github.com/NvChad/starter ~/.config/nvim && nvim'
+alias=NVChadinit='wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \ && cd ~/.local/share/fonts \ && unzip JetBrainsMono.zip \ && rm JetBrainsMono.zip \ && fc-cache -fv; git clone https://github.com/NvChad/starter ~/.config/nvim && nvim'
 # Atuin ( Only listing for usage with Debian based systems since it can be installed with PacMan on Arch ); ( Adds 
 # Bash - PreExec for shell as a dependency) :
 alias atuininstall='curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh; curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh; echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.bashrc; r'
