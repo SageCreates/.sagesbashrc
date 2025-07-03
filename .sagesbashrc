@@ -19,15 +19,24 @@
 # nb [ Notebook for the terminal ]
 
 # Dependency / Configuration Source / Website :
-# NeoVim ( Listing for Debian usage because the version available through APT is outdated ); ( Only run on Debian systems) :
-alias debianneoviminstall='sudo add-apt-repository ppa:neovim-ppa/unstable -y; sudo apt update; sudo apt install neovim'
-# NVChad : https://nvchad.com/docs/quickstart/install
-# Atuin ( Only listing for usage with Debian based systems since it can be installed with PacMan on Arch ) : https://atuin.sh/
+# NeoVim ( Listing for Debian usage because the version available through APT is outdated ); ( Only run on Debian systems );
+# ( There are two different versions of NeoVim depending on the CPU architecture you are using, use the ARM version on ARM
+# based systems ) :
+alias debianneoviminstall='curl -sL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz \
+| sudo tar -xzf - --strip-components=1 --overwrite -C /usr'
+alias debianneovimarminstall='curl -sL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.tar.gz \
+| sudo tar -xzf - --strip-components=1 --overwrite -C /usr'
+# NVChad : 
+alias=NVChadinit='git clone https://github.com/NvChad/starter ~/.config/nvim && nvim'
+# Atuin ( Only listing for usage with Debian based systems since it can be installed with PacMan on Arch ); ( Adds 
+# Bash - PreExec for shell as a dependency) :
+alias atuininstall='curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh; curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh; echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.bashrc; r'
 # Yay ( For usage on Arch only ); ( Only run on Arch systems) :
 alias archyayinstall='cd; sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si; cd; sudo rm -r yay'
 
 # Terminal Decorations :
 # On Every Open :
+neofetch
 fastfetch
 # ASCII Art : Sage's Navi
 cat ~/.sagesbashrc/sagesnavi.txt
@@ -96,18 +105,4 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 [[ -f /usr/share/bash-preexec/bash-preexec.sh ]] && source /usr/share/bash-preexec/bash-preexec.sh
 
 # Atuin Shell History Processor Loader :
-eval "$(atuin init bash)"
 . "$HOME/.atuin/bin/env"
-
-# FZF Loader :
-eval "$(fzf --bash)"
-# Search Components :
-# Finds Within Your Current Directory { ALT + S } :
-export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'tree -C {}'"
-# 
-export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'bat -n --color=always {}'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
